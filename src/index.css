@@ -3,3 +3,22 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.card{
+  margin-left: 40px;
+  height: 30vh;
+  width: 10vw;
+  display: inline-block;
+  background-color: blue;
+  border-width: medium;
+  border-color: white;
+  border-style: solid;
+}
+
+.wsector{
+  margin-top: 20px;
+}
+
+.bsector{
+  margin-top: 200px;
+}
