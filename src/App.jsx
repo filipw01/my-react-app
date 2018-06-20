@@ -17,19 +17,20 @@ class Board extends React.Component {
     this.state = {
       attacker: null,
       ad: null,
-      hp: null
+      hp: null,
+      isAttacking: null
     };
   }
 
-  updateAttacker = (name, ad, hp) => {
+  updateAttacker = (name, ad, hp, isAttacking) => {
     this.setState({
       attacker: name,
       ad: ad,
-      hp: hp
+      hp: hp,
+      isAttacking: !isAttacking
     });
+    return !isAttacking;
   };
-
-
 
   render() {
     return (
@@ -53,19 +54,61 @@ class Board extends React.Component {
 }
 
 class Card extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: this.props.name,
+      ad: this.props.ad,
+      hp: this.props.hp,
+      isAttacking: false
+    };
+  }
+
+  handleOutsideClick = () => {
+    this.setState({
+      isAttacking: false
+    });
+  };
+
+  handleClick = () => {
+    this.setState({
+      isAttacking: this.props.handler(
+        this.state.name,
+        this.state.ad,
+        this.state.hp,
+        this.state.isAttacking
+      )
+    });
+  };
+
   render() {
-    return (
-      <div
-        className="card"
-        onClick={() =>
-          this.props.handler(this.props.name, this.props.ad, this.props.hp)
-        }
-      >
-        <p>NAME: {this.props.name}</p>
-        <p>AD {this.props.ad}</p>
-        <p>HP {this.props.hp}</p>
-      </div>
-    );
+    if (this.state.isAttacking) {
+      document.addEventListener("click", this.handleOutsideClick);
+      return (
+        <div
+          className="card"
+          onClick={this.handleClick}
+          style={{backgroundColor: "red"}}
+        >
+          <p>NAME: {this.state.name}</p>
+          <p>AD {this.state.ad}</p>
+          <p>HP {this.state.hp}</p>
+        </div>
+      );
+    } else {
+      document.removeEventListener("click", this.handleOutsideClick);
+      return (
+        <div
+          className="card"
+          onClick={this.handleClick}
+          style={{backgroundColor: "blue"}}
+        >
+          <p>NAME: {this.state.name}</p>
+          <p>AD {this.state.ad}</p>
+          <p>HP {this.state.hp}</p>
+        </div>
+      );
+    }
   }
 }
 
