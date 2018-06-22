@@ -1,6 +1,6 @@
 import React from "react";
 
-class Card extends React.Component {
+class AllyCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,8 +20,9 @@ class Card extends React.Component {
     );
   };
 
+
   render() {
-    if (this.state.ID == this.props.attackerID) {
+    if (this.state.ID === this.props.attackerID) {
       return (
         <div
           className="card"
@@ -49,4 +50,4 @@ class Card extends React.Component {
   }
 }
 
-export default Card;
+export default AllyCard;

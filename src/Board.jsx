@@ -1,6 +1,6 @@
 import React from "react";
-import Card from "./Card";
-
+import OpponentCard from "./OpponentCard";
+import AllyCard from "./AllyCard";
 
 class Board extends React.Component {
   constructor(props) {
@@ -9,7 +9,8 @@ class Board extends React.Component {
       attacker: null,
       ad: null,
       hp: null,
-      attackerID: null
+      attackerID: null,
+      nextAttack: []
     };
   }
 
@@ -22,8 +23,29 @@ class Board extends React.Component {
     });
   };
 
+  bindAttacker = ID => {
+    let array = [...this.state.nextAttack];
+    if (this.state.attackerID) {
+      for (let value of array) {
+        if (value[0] === this.state.attackerID) {
+          let index = array.indexOf(value);
+          this.setState({
+            nextAttack: array.splice(index, 1)
+          });
+        }
+      }
+      this.setState({
+        nextAttack: [...array, [this.state.attackerID, ID]]
+      });
+      console.log(this.state.nextAttack);
+    }
+  };
+
   handleOutsideClick = () => {
     this.setState({
+      attacker: null,
+      ad: null,
+      hp: null,
       attackerID: null
     });
   };
@@ -40,7 +62,33 @@ class Board extends React.Component {
         <h3>AD is {this.state.ad}</h3>
         <h3>HP is {this.state.hp}</h3>
         <div align="center" className="wsector">
-          <Card
+          <OpponentCard
+            name="krasnolud"
+            id="b1"
+            ad="5"
+            hp="3"
+            attackerID={this.state.attackerID}
+            handler={this.bindAttacker}
+          />
+          <OpponentCard
+            name="goblin"
+            id="b2"
+            ad="4"
+            hp="4"
+            attackerID={this.state.attackerID}
+            handler={this.bindAttacker}
+          />
+          <OpponentCard
+            name="gnom"
+            id="b3"
+            ad="3"
+            hp="5"
+            attackerID={this.state.attackerID}
+            handler={this.bindAttacker}
+          />
+        </div>;
+        <div align="center" className="bsector">
+          <AllyCard
             name="ork"
             id="a1"
             ad="6"
@@ -48,7 +96,7 @@ class Board extends React.Component {
             attackerID={this.state.attackerID}
             handler={this.updateAttacker}
           />
-          <Card
+          <AllyCard
             name="ogr"
             id="a2"
             ad="1"
@@ -56,36 +104,10 @@ class Board extends React.Component {
             attackerID={this.state.attackerID}
             handler={this.updateAttacker}
           />
-          <Card
+          <AllyCard
             name="nimfa"
             id="a3"
             ad="2"
-            hp="5"
-            attackerID={this.state.attackerID}
-            handler={this.updateAttacker}
-          />
-        </div>
-        <div align="center" className="bsector">
-          <Card
-            name="krasnolud"
-            id="b1"
-            ad="5"
-            hp="3"
-            attackerID={this.state.attackerID}
-            handler={this.updateAttacker}
-          />
-          <Card
-            name="goblin"
-            id="b2"
-            ad="4"
-            hp="4"
-            attackerID={this.state.attackerID}
-            handler={this.updateAttacker}
-          />
-          <Card
-            name="gnom"
-            id="b3"
-            ad="3"
             hp="5"
             attackerID={this.state.attackerID}
             handler={this.updateAttacker}
