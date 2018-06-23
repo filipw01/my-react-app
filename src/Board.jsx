@@ -1,6 +1,7 @@
 import React from "react";
 import OpponentCard from "./OpponentCard";
 import AllyCard from "./AllyCard";
+import AttackOrder from "./AttackOrder";
 
 class Board extends React.Component {
   constructor(props) {
@@ -61,6 +62,7 @@ class Board extends React.Component {
         <h3>Attacker is {this.state.attacker}</h3>
         <h3>AD is {this.state.ad}</h3>
         <h3>HP is {this.state.hp}</h3>
+        <AttackOrder order={this.state.nextAttack} />
         <div align="center" className="wsector">
           <OpponentCard
             name="krasnolud"
