@@ -16,9 +16,15 @@ body {
 }
 
 .wsector{
-  margin-top: 5px;
+  position: absolute;
+  top: 0;
+  right: 10vw;
+  margin-top: 10px;
 }
 
 .bsector{
-  margin-top: 100px;
+  position: absolute;
+  top: 0;
+  right: 10vw;
+  margin-top: 400px;
 }

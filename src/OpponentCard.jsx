@@ -7,13 +7,14 @@ class OpponentCard extends React.Component {
       name: this.props.name,
       ad: this.props.ad,
       hp: this.props.hp,
-      ID: this.props.id
     };
   }
 
   handleAttack = () => {
     this.props.handler(
-      this.state.ID
+      this.state.name,
+      this.state.ad,
+      this.state.hp
     );
   };
 

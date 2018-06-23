@@ -7,7 +7,6 @@ class AllyCard extends React.Component {
       name: this.props.name,
       ad: this.props.ad,
       hp: this.props.hp,
-      ID: this.props.id
     };
   }
 
@@ -16,13 +15,12 @@ class AllyCard extends React.Component {
       this.state.name,
       this.state.ad,
       this.state.hp,
-      this.state.ID
     );
   };
 
 
   render() {
-    if (this.state.ID === this.props.attackerID) {
+    if (this.state.name === this.props.attackerName) {
       return (
         <div
           className="card"
