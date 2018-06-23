@@ -7,7 +7,7 @@ class AttackOrder extends React.Component {
       var order = [];
       for (let value of this.props.order) {
         order.push(
-          <h3>
+          <h3 key={value[0]}>
             {value[0]} -> {value[1]}
           </h3>
         );

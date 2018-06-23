@@ -10,7 +10,8 @@ class Board extends React.Component {
       attackerAd: null,
       attackerHp: null,
       attackerName: null,
-      nextAttack: []
+      nextAttack: [],
+      endTurn: null
     };
   }
 
@@ -57,9 +58,18 @@ class Board extends React.Component {
 
   endTurn = () => {
     this.setState({
-      nextAttack: []
+      endTurn: true
     });
   };
+
+  componentDidUpdate() {
+    if (this.state.endTurn) {
+      this.setState({
+        endTurn: false,
+        nextAttack: []
+      });
+    }
+  }
 
   render() {
     if (this.state.attackerName) {
@@ -81,6 +91,8 @@ class Board extends React.Component {
             hp="3"
             attackerName={this.state.attackerName}
             handler={this.bindAttacker}
+            nextAttack={this.state.nextAttack}
+            endTurn={this.state.endTurn}
           />
           <OpponentCard
             name="goblin"
@@ -88,6 +100,8 @@ class Board extends React.Component {
             hp="4"
             attackerName={this.state.attackerName}
             handler={this.bindAttacker}
+            nextAttack={this.state.nextAttack}
+            endTurn={this.state.endTurn}
           />
           <OpponentCard
             name="gnom"
@@ -95,6 +109,8 @@ class Board extends React.Component {
             hp="5"
             attackerName={this.state.attackerName}
             handler={this.bindAttacker}
+            nextAttack={this.state.nextAttack}
+            endTurn={this.state.endTurn}
           />
         </div>
         <div align="center" className="bsector">
@@ -104,6 +120,8 @@ class Board extends React.Component {
             hp="2"
             attackerName={this.state.attackerName}
             handler={this.updateAttacker}
+            nextAttack={this.state.nextAttack}
+            endTurn={this.state.endTurn}
           />
           <AllyCard
             name="ogr"
@@ -111,6 +129,8 @@ class Board extends React.Component {
             hp="7"
             attackerName={this.state.attackerName}
             handler={this.updateAttacker}
+            nextAttack={this.state.nextAttack}
+            endTurn={this.state.endTurn}
           />
           <AllyCard
             name="nimfa"
@@ -118,6 +138,8 @@ class Board extends React.Component {
             hp="5"
             attackerName={this.state.attackerName}
             handler={this.updateAttacker}
+            nextAttack={this.state.nextAttack}
+            endTurn={this.state.endTurn}
           />
         </div>
       </div>

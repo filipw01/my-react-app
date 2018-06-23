@@ -6,17 +6,36 @@ class AllyCard extends React.Component {
     this.state = {
       name: this.props.name,
       ad: this.props.ad,
-      hp: this.props.hp,
+      hp: this.props.hp
     };
   }
 
   handleClick = () => {
-    this.props.handler(
-      this.state.name,
-      this.state.ad,
-      this.state.hp,
-    );
+    this.props.handler(this.state.name, this.state.ad, this.state.hp);
   };
+
+  changeStats = () => {
+    if (this.props.nextAttack) {
+      for (let value of this.props.nextAttack) {
+        if (value[0] === this.state.name) {
+          this.setState({
+            hp: value[3][0] - value[2][1]
+          });
+        }
+        if (value[1] === this.state.name) {
+          this.setState({
+            hp: value[3][1] - value[2][0]
+          });
+        }
+      }
+    }
+  };
+
+  componentDidUpdate() {
+    if (this.props.endTurn) {
+      this.changeStats();
+    }
+  }
 
 
   render() {
