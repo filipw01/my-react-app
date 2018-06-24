@@ -37,8 +37,10 @@ class OpponentCard extends React.Component {
     }
   }
 
-
   render() {
+    if (this.state.hp <= 1) {
+      return null;
+    }
     return (
       <div
         className="card"

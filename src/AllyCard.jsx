@@ -38,6 +38,9 @@ class AllyCard extends React.Component {
   }
 
   render() {
+    if (this.state.hp <= 1) {
+      return null
+    }
     if (this.state.name === this.props.attackerName) {
       return (
         <div
