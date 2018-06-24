@@ -37,12 +37,7 @@ class Board extends React.Component {
       this.setState({
         nextAttack: [
           ...array,
-          [
-            this.state.attackerName,
-            prey,
-            [this.state.attackerAd, preyAd],
-            [this.state.attackerHp, preyHp]
-          ]
+          [this.state.attackerName, prey, [this.state.attackerAd, preyAd]]
         ]
       });
     }

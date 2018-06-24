@@ -16,18 +16,18 @@ class AllyCard extends React.Component {
 
   changeStats = () => {
     if (this.props.nextAttack) {
+      let hp = this.state.hp;
       for (let value of this.props.nextAttack) {
         if (value[0] === this.state.name) {
-          this.setState({
-            hp: value[3][0] - value[2][1]
-          });
+          hp -= value[2][1];
         }
         if (value[1] === this.state.name) {
-          this.setState({
-            hp: value[3][1] - value[2][0]
-          });
+          hp -= value[2][0];
         }
       }
+      this.setState({
+        hp: hp
+      });
     }
   };
 
@@ -36,7 +36,6 @@ class AllyCard extends React.Component {
       this.changeStats();
     }
   }
-
 
   render() {
     if (this.state.name === this.props.attackerName) {
