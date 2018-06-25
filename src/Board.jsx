@@ -74,41 +74,45 @@ class Board extends React.Component {
     }
     return (
       <div>
-        <h3>Attacker is {this.state.attackerName}</h3>
-        <h3>AD is {this.state.attackerAd}</h3>
-        <h3>HP is {this.state.attackerHp}</h3>
-        <AttackOrder order={this.state.nextAttack} />
-        <button onClick={this.endTurn}> End turn </button>
-        <div align="center" className="wsector">
-          <OpponentCard
-            name="krasnolud"
-            ad="5"
-            hp="3"
-            attackerName={this.state.attackerName}
-            handler={this.bindAttacker}
-            nextAttack={this.state.nextAttack}
-            endTurn={this.state.endTurn}
-          />
-          <OpponentCard
-            name="goblin"
-            ad="4"
-            hp="4"
-            attackerName={this.state.attackerName}
-            handler={this.bindAttacker}
-            nextAttack={this.state.nextAttack}
-            endTurn={this.state.endTurn}
-          />
-          <OpponentCard
-            name="gnom"
-            ad="3"
-            hp="5"
-            attackerName={this.state.attackerName}
-            handler={this.bindAttacker}
-            nextAttack={this.state.nextAttack}
-            endTurn={this.state.endTurn}
-          />
+        <div>
+          <div class="infoBox">
+            <h3>Attacker is {this.state.attackerName}</h3>
+            <h3>AD is {this.state.attackerAd}</h3>
+            <h3>HP is {this.state.attackerHp}</h3>
+            <AttackOrder order={this.state.nextAttack} />
+            <button onClick={this.endTurn}> End turn </button>
+          </div>
+          <div align="center" className="enemySector">
+            <OpponentCard
+              name="krasnolud"
+              ad="5"
+              hp="3"
+              attackerName={this.state.attackerName}
+              handler={this.bindAttacker}
+              nextAttack={this.state.nextAttack}
+              endTurn={this.state.endTurn}
+            />
+            <OpponentCard
+              name="goblin"
+              ad="4"
+              hp="4"
+              attackerName={this.state.attackerName}
+              handler={this.bindAttacker}
+              nextAttack={this.state.nextAttack}
+              endTurn={this.state.endTurn}
+            />
+            <OpponentCard
+              name="gnom"
+              ad="3"
+              hp="5"
+              attackerName={this.state.attackerName}
+              handler={this.bindAttacker}
+              nextAttack={this.state.nextAttack}
+              endTurn={this.state.endTurn}
+            />
+          </div>
         </div>
-        <div align="center" className="bsector">
+        <div align="center" className="allySector">
           <AllyCard
             name="ork"
             ad="6"

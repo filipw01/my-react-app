@@ -38,8 +38,23 @@ class OpponentCard extends React.Component {
   }
 
   render() {
-    if (this.state.hp <= 1) {
-      return null;
+    if (this.state.hp <= 0) {
+      return (
+        <div
+          className="card"
+          style={{
+            backgroundColor: "gray",
+            width: 0,
+            opacity: 0,
+            transition:
+              "width 2s, opacity 0.5s, background-color 0.1s linear"
+          }}
+        >
+          <p>{this.state.name}</p>
+          <p>AD {this.state.ad}</p>
+          <p>HP {this.state.hp}</p>
+        </div>
+      );
     }
     return (
       <div
@@ -47,7 +62,7 @@ class OpponentCard extends React.Component {
         onClick={this.handleAttack}
         style={{backgroundColor: "blue"}}
       >
-        <p>NAME: {this.state.name}</p>
+        <p>{this.state.name}</p>
         <p>AD {this.state.ad}</p>
         <p>HP {this.state.hp}</p>
       </div>

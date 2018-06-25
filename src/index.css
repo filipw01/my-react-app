@@ -4,27 +4,27 @@ body {
   font-family: sans-serif;
 }
 
-.card{
-  margin-left: 40px;
+.card {
   height: 30vh;
   width: 10vw;
-  display: inline-block;
+  display: inline-grid;
   background-color: blue;
-  border-width: medium;
-  border-color: white;
-  border-style: solid;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
-.wsector{
-  position: absolute;
-  top: 0;
-  right: 10vw;
-  margin-top: 10px;
+.allySector {
+  margin-top: 50px;
 }
 
-.bsector{
+.enemySector {
+  margin-top: 50px;
+}
+
+.infoBox {
+  margin-left: 50px;
+  display: inline-block;
   position: absolute;
   top: 0;
-  right: 10vw;
-  margin-top: 400px;
+  left: 0;
 }
